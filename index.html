@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Invitación Ayelén & Tobías</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f2edea url('https://i.imgur.com/zlXg1Fh.jpg') center/cover no-repeat;
+      font-family: 'Open Sans', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .envelope {
+      width: 320px;
+      height: 220px;
+      position: relative;
+      background-color: #e0c9b4;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
+      cursor: pointer;
+      perspective: 1000px;
+    }
+
+    .flap {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      background: #f8f4f0;
+      top: 0;
+      left: 0;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      transform-origin: top;
+      transition: transform 0.8s ease;
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(-180deg);
+    }
+
+    .letter {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 10px;
+      box-sizing: border-box;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+      text-align: center;
+    }
+
+    .envelope.open .letter {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .letter h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      color: #8e5a3c;
+      margin: 10px 0;
+    }
+
+    .letter p {
+      font-size: 16px;
+      color: #5a4b3b;
+      margin: 8px 0;
+    }
+
+    .photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 3px solid #d8bca5;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="music" autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+  Tu navegador no soporta audio HTML5.
+</audio>
+
+<div class="envelope" onclick="toggleOpen()">
+  <div class="flap"></div>
+  <div class="letter">
+    <img class="photo" src="https://i.imgur.com/UpKRDGz.jpg" alt="Ayelén y Tobías">
+    <h2>Ayelén & Tobías</h2>
+    <p>Te invitamos a nuestro casamiento</p>
+    <p>📅 Viernes 5 de diciembre del 2025</p>
+    <p>🕗 20:00 hs</p>
+    <p>📍 Juan B. Justo 5104</p>
+  </div>
+</div>
+
+<script>
+  function toggleOpen() {
+    const envelope = document.querySelector('.envelope');
+    envelope.classList.toggle('open');
+
+    const music = document.getElementById('music');
+    if (envelope.classList.contains('open')) {
+      music.play();
+    } else {
+      music.pause();
+    }
+  }
+</script>
+
+</body>
+</html>
